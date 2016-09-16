@@ -1,0 +1,931 @@
+/* Vector screen styles */
+/*
+ * Any rules which should not be flipped automatically in right-to-left situations should be
+ * prepended with @noflip in a comment block.
+ *
+ * This stylesheet employs a few CSS trick to accomplish compatibility with a wide range of web
+ * browsers. The most common trick is to use some styles in IE6 only. This is accomplished by using
+ * a rule that makes things work in IE6, and then following it with a rule that begins with
+ * "html > body" or use a child selector ">", which is ignored by IE6 because it does not support
+ * the child selector. You can spot this by looking for the "OVERRIDDEN BY COMPLIANT BROWSERS" and
+ * "IGNORED BY IE6" comments.
+ */
+/* Framework */
+html {
+  font-size: 100%;
+  height: 100%;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background: -webkit-linear-gradient(to top, #FFF4F8 5%, white);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(to top, #FFF4F8 5%, white);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top top, #FFF4F8 5%, white);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to top, #FFF4F8 5%, white);
+  /* Standard syntax */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+/* Content */
+.mw-body {
+  margin-left: 10em;
+  padding: 1em;
+  /* Border on top, left, and bottom side */
+  border: 1px solid #a7d7f9;
+  border-left-color: #F7E2FC;
+  border-bottom-color: #F7E2FC;
+  border-right-width: 0;
+  /* Merge the border with tabs' one (in their background image) */
+  margin-top: -1px;
+  background-color: #fff;
+  color: #252525;
+  direction: ltr;
+}
+.mw-body .mw-editsection,
+.mw-body .mw-editsection-like {
+  font-family: 'Roboto', sans-serif;
+}
+.mw-body p {
+  line-height: inherit;
+  margin: 0.5em 0;
+}
+.mw-body h1,
+.mw-body h2 {
+  font-family: 'Roboto', serif;
+  line-height: 1.3;
+  margin-bottom: 0.25em;
+  padding: 0;
+  font-weight: bold;
+  /* Fallback heading font for scripts which render poorly in @content-heading-font-family. */
+  /* See T73240 */
+}
+.mw-body h1:lang( ja ),
+.mw-body h2:lang( ja ),
+.mw-body h1:lang( he ),
+.mw-body h2:lang( he ),
+.mw-body h1:lang( ko ),
+.mw-body h2:lang( ko ) {
+  /* See T65827 */
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.mw-body h1 {
+  font-size: 1.9em;
+}
+.mw-body .mw-body-content h1 {
+  margin-top: 1em;
+}
+.mw-body h2 {
+  font-size: 1.5em;
+  margin-top: 1em;
+}
+.mw-body h3,
+.mw-body h4,
+.mw-body h5,
+.mw-body h6 {
+  line-height: 1.6;
+  margin-top: 0.3em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.mw-body h3 {
+  font-size: 1.2em;
+}
+.mw-body h3,
+.mw-body h4 {
+  font-weight: bold;
+}
+.mw-body h4,
+.mw-body h5,
+.mw-body h6 {
+  font-size: 100%;
+  /* (reset) */
+}
+.mw-body #toc h2,
+.mw-body .toc h2 {
+  font-size: 100%;
+  /* (reset) */
+  font-family: 'Roboto', sans-serif;
+}
+.mw-body .firstHeading {
+  /* Change the default from mediawiki.skinning CSS to let indicators float into heading area */
+  overflow: visible;
+}
+.mw-body .mw-indicators {
+  float: right;
+  line-height: 1.6;
+  font-size: 0.875em;
+  /* Ensure that this is displayed on top of .mw-body-content and clickable */
+  position: relative;
+  z-index: 1;
+}
+.mw-body .mw-indicator {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+/* Hide empty portlets */
+div.emptyPortlet {
+  display: none;
+}
+ul {
+  list-style-type: disc;
+  /* Fallback to PNG bullet for IE 8 and below using CSS hack */
+  /* Fallback to PNG bullet for IE 8 and below using CSS hack */
+  /* Fallback to PNG bullet for IE 8 and below using CSS hack */
+  list-style-image: /* @embed */ url('images/bullet-icon.svg');
+  /* Fallback to PNG bullet for IE 8 and below using CSS hack */
+  list-style-image: /* @embed */ url('images/bullet-icon.png') \9;
+}
+pre,
+.mw-code {
+  line-height: 1.3em;
+}
+/* Site Notice (includes notices from CentralNotice extension) */
+#siteNotice {
+  font-size: 0.8em;
+}
+.redirectText {
+  font-size: 140%;
+}
+.redirectMsg p {
+  margin: 0;
+}
+.mw-body-content {
+  position: relative;
+  line-height: 1.6;
+  font-size: 0.875em;
+  z-index: 0;
+}
+.infobox {
+  width: 320px;
+  height: 400px;
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid;
+  position: relative;
+  float: right;
+  margin: 10px;
+}
+.infobox .heading {
+  height: 8%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-family: 'Roboto Condensed';
+}
+.infobox .picture {
+  height: 62%;
+}
+.infobox .picture img {
+  height: 100%;
+  width: 100%;
+}
+.infobox .info {
+  height: 30%;
+}
+.infobox .info p {
+  margin-top: 10px;
+}
+.infobox .info div {
+  position: absolute;
+  width: 80%;
+  background-color: white;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.infobox.persona {
+  border-color: #15616B;
+}
+.infobox.persona .heading,
+.infobox.persona .info {
+  background-color: #15616B;
+}
+.infobox.lugar {
+  border-color: #496A35;
+}
+.infobox.lugar .heading,
+.infobox.lugar .info {
+  background-color: #496A35;
+}
+.infobox.obra {
+  border-color: #783739;
+}
+.infobox.obra .heading,
+.infobox.obra .info {
+  background-color: #783739;
+}
+.infobox.grupo {
+  border-color: #5D386B;
+}
+.infobox.grupo .heading,
+.infobox.grupo .info {
+  background-color: #5D386B;
+}
+/* Personal */
+#p-personal {
+  position: relative;
+  top: 1.33em;
+  right: 0.75em;
+  z-index: 100;
+  float: right;
+  background-color: #726F9D;
+  padding: 8px 11px 8px 8px;
+}
+#p-personal h3 {
+  display: none;
+}
+#p-personal ul {
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0;
+  float: left;
+  width: 100%;
+}
+#p-personal li {
+  line-height: 1.125em;
+  /* @noflip */
+  float: left;
+  margin-left: 0.75em;
+  margin-top: 0.5em;
+  font-size: 0.75em;
+  white-space: nowrap;
+}
+#p-personal li a {
+  color: white;
+}
+#p-personal li a.new,
+#p-personal li a.new:visited {
+  color: #79FFFF;
+}
+/* Icon for Usernames */
+#pt-userpage,
+#pt-anonuserpage {
+  background-position: left top;
+  background-repeat: no-repeat;
+  /* SVG support using a transparent gradient to guarantee cross-browser
+	 * compatibility (browsers able to understand gradient syntax support also SVG) */
+  background-image: url('images/user-icon.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/user-icon.png');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/user-icon.png');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/user-icon.png');
+  padding-left: 15px !important;
+}
+/* Show "Not logged in" text in gray */
+#pt-anonuserpage {
+  color: #707070;
+}
+/* Search */
+#p-search {
+  /* @noflip */
+  float: left;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+}
+#p-search h3 {
+  display: none;
+}
+#p-search form,
+#p-search input {
+  margin: 0;
+  margin-top: 0.4em;
+}
+div#simpleSearch {
+  display: block;
+  width: 12.6em;
+  width: 20vw;
+  /* responsive width */
+  min-width: 5em;
+  max-width: 20em;
+  padding-right: 1.4em;
+  height: 1.4em;
+  margin-top: 0.65em;
+  position: relative;
+  min-height: 1px;
+  /* Gotta trigger hasLayout for IE7 */
+  border: solid 1px #aaa;
+  color: black;
+  background-color: white;
+  background-image: /* @embed */ url('images/search-fade.png');
+  background-position: top left;
+  background-repeat: repeat-x;
+}
+div#simpleSearch input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: black;
+}
+div#simpleSearch #searchInput {
+  width: 100%;
+  padding: 0.2em 0 0.2em 0.2em;
+  font-size: 13px;
+  direction: ltr;
+  -webkit-appearance: textfield;
+}
+div#simpleSearch #searchInput:focus {
+  outline: none;
+}
+div#simpleSearch #searchInput.placeholder {
+  color: #999;
+}
+div#simpleSearch #searchInput:-ms-input-placeholder {
+  color: #999;
+}
+div#simpleSearch #searchInput:-moz-placeholder {
+  color: #999;
+}
+div#simpleSearch #searchInput::-webkit-search-decoration,
+div#simpleSearch #searchInput::-webkit-search-cancel-button,
+div#simpleSearch #searchInput::-webkit-search-results-button,
+div#simpleSearch #searchInput::-webkit-search-results-decoration {
+  -webkit-appearance: textfield;
+}
+div#simpleSearch #searchButton,
+div#simpleSearch #mw-searchButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.65em;
+  height: 100%;
+  cursor: pointer;
+  /* Hide button text and replace it with the image. */
+  text-indent: -99999px;
+  /* Needed to make IE6 respect the text-indent. */
+  line-height: 1;
+  /* Opera 12 on RTL flips the text in a funny way without this. */
+  /* @noflip */
+  direction: ltr;
+  white-space: nowrap;
+  overflow: hidden;
+  background-image: url('images/search-ltr.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/search-ltr.svg');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/search-ltr.svg');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/search-ltr.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+div#simpleSearch #mw-searchButton {
+  z-index: 1;
+}
+/*
+Styling for namespace tabs (page, discussion) and views (read, edit, view history, watch and other actions)
+*/
+/* Navigation Labels */
+div.vectorTabs h3 {
+  display: none;
+}
+/* Namespaces and Views */
+div.vectorTabs {
+  /* @noflip */
+  float: left;
+  height: 2.5em;
+  background-image: /* @embed */ url('images/tab-break.png');
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  padding-left: 1px;
+}
+div.vectorTabs ul {
+  /* @noflip */
+  float: left;
+  height: 100%;
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+  background-image: /* @embed */ url('images/tab-break.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  /* IGNORED BY IE6 which doesn't support child selector */
+}
+div.vectorTabs ul li {
+  /* @noflip */
+  float: left;
+  line-height: 1.125em;
+  /* For IE6, overridden later to display:block by modern browsers */
+  display: inline-block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f3f3;
+  background-image: /* @embed */ url('images/tab-normal-fade.png');
+  background-position: bottom left;
+  background-repeat: repeat-x;
+  white-space: nowrap;
+}
+div.vectorTabs ul > li {
+  display: block;
+}
+div.vectorTabs li {
+  /* Ignored by IE6 which doesn't support child selector */
+}
+div.vectorTabs li.new a,
+div.vectorTabs li.new a:visited {
+  color: #a55858;
+}
+div.vectorTabs li.selected {
+  background-image: /* @embed */ url('images/tab-current-fade.png');
+}
+div.vectorTabs li.selected a,
+div.vectorTabs li.selected a:visited {
+  color: #333;
+  text-decoration: none;
+}
+div.vectorTabs li.icon a {
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+div.vectorTabs li a {
+  /* For IE6, overridden later to display:block by modern browsers */
+  display: inline-block;
+  height: 1.9em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  color: #0645ad;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+div.vectorTabs li > a {
+  display: block;
+}
+div.vectorTabs span {
+  display: inline-block;
+  background-image: /* @embed */ url('images/tab-break.png');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  /* Ignored by IE6 which doesn't support child selector */
+}
+div.vectorTabs span a {
+  /* For IE6, overridden later to display:block by modern browsers */
+  display: inline-block;
+  padding-top: 1.25em;
+}
+div.vectorTabs span > a {
+  /* @noflip */
+  float: left;
+  display: block;
+}
+#left-navigation div.vectorTabs {
+  border-left: 1px solid #F7E2FC;
+  background-image: none;
+}
+/* Variants and Actions */
+div.vectorMenu {
+  /* @noflip */
+  direction: ltr;
+  /* @noflip */
+  float: left;
+  cursor: pointer;
+  position: relative;
+}
+body.rtl div.vectorMenu {
+  /* @noflip */
+  direction: rtl;
+}
+div#mw-head div.vectorMenu h3 {
+  /* @noflip */
+  float: left;
+  background-image: /* @embed */ url('images/tab-break.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  font-size: 1em;
+  height: 2.5em;
+  padding-right: 1px;
+  margin-right: -1px;
+}
+div.vectorMenu h3 span {
+  display: block;
+  font-size: 0.8em;
+  padding-left: 0.7em;
+  padding-top: 1.375em;
+  margin-right: 20px;
+  font-weight: normal;
+  color: #8E2395;
+}
+div.vectorMenu h3 a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 2.5em;
+  background-image: url('images/arrow-down-icon.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/arrow-down-icon.svg');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/arrow-down-icon.svg');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/arrow-down-icon.png');
+  background-position: 100% 70%;
+  background-repeat: no-repeat;
+  -webkit-transition: background-position 250ms;
+  -moz-transition: background-position 250ms;
+  -o-transition: background-position 250ms;
+  transition: background-position 250ms;
+}
+div.vectorMenu.menuForceShow h3 a {
+  background-position: 100% 100%;
+}
+div.vectorMenuFocus h3 a {
+  background-image: url('images/arrow-down-focus-icon.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/arrow-down-focus-icon.svg');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/arrow-down-focus-icon.svg');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/arrow-down-focus-icon.png');
+}
+div.vectorMenu div.menu {
+  min-width: 100%;
+  position: absolute;
+  top: 2.5em;
+  left: -1px;
+  background-color: white;
+  border: solid 1px silver;
+  border-top-width: 0;
+  clear: both;
+  text-align: left;
+  display: none;
+  z-index: 1;
+}
+/* Enable forcing showing of the menu for accessibility */
+div.vectorMenu:hover div.menu,
+div.vectorMenu.menuForceShow div.menu {
+  display: block;
+}
+div.vectorMenu ul {
+  list-style-type: none;
+  list-style-image: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+/* Fixes old versions of FireFox */
+div.vectorMenu ul,
+x:-moz-any-link {
+  min-width: 5em;
+}
+/* Returns things back to normal in modern versions of FireFox */
+div.vectorMenu ul,
+x:-moz-any-link,
+x:default {
+  min-width: 0;
+}
+div.vectorMenu li {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  line-height: 1em;
+}
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+div.vectorMenu li a {
+  display: inline-block;
+  padding: 0.5em;
+  white-space: nowrap;
+  color: #0645ad;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+/* IGNORED BY IE6 */
+div.vectorMenu li > a {
+  display: block;
+}
+div.vectorMenu li.selected a,
+div.vectorMenu li.selected a:visited {
+  color: #333;
+  text-decoration: none;
+}
+* html div.vectorMenu div.menu {
+  display: block;
+  position: static;
+  border: 0;
+}
+* html div#mw-head div.vectorMenu h3 {
+  display: none;
+}
+* html div.vectorMenu li {
+  float: left;
+  line-height: 1.125em;
+  border-right: 1px solid #a7d7f9;
+}
+* html div.vectorMenu li a {
+  padding-top: 1.25em;
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/* Watch/Unwatch Icon Styling */
+#ca-unwatch.icon a,
+#ca-watch.icon a {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 26px;
+  /* This hides the text but shows the background image */
+  padding-top: 3.1em;
+  margin-top: 0;
+  /* Only applied in IE6 */
+  _margin-top: -0.8em;
+  height: 0;
+  overflow: hidden;
+  background-position: 5px 60%;
+}
+#ca-unwatch.icon a {
+  background-image: url('images/unwatch-icon.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/unwatch-icon.svg');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/unwatch-icon.svg');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/unwatch-icon.png');
+}
+#ca-watch.icon a {
+  background-image: url('images/watch-icon.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/watch-icon.svg');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/watch-icon.svg');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/watch-icon.png');
+}
+#ca-unwatch.icon a:hover,
+#ca-unwatch.icon a:focus {
+  background-image: url('images/unwatch-icon-hl.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/unwatch-icon-hl.svg');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/unwatch-icon-hl.svg');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/unwatch-icon-hl.png');
+}
+#ca-watch.icon a:hover,
+#ca-watch.icon a:focus {
+  background-image: url('images/watch-icon-hl.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/watch-icon-hl.svg');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/watch-icon-hl.svg');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/watch-icon-hl.png');
+}
+#ca-unwatch.icon a.loading,
+#ca-watch.icon a.loading {
+  background-image: url('images/watch-icon-loading.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/watch-icon-loading.svg');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/watch-icon-loading.svg');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/watch-icon-loading.png');
+  -webkit-animation: rotate 700ms infinite linear;
+  -moz-animation: rotate 700ms infinite linear;
+  -o-animation: rotate 700ms infinite linear;
+  animation: rotate 700ms infinite linear;
+  /* Suppress the hilarious rotating focus outline on Firefox */
+  outline: none;
+  cursor: default;
+  pointer-events: none;
+  background-position: 50% 60%;
+  -webkit-transform-origin: 50% 57%;
+  transform-origin: 50% 57%;
+}
+#ca-unwatch.icon a span,
+#ca-watch.icon a span {
+  display: none;
+}
+/* Hide, but keep accessible for screen-readers */
+#mw-navigation h2 {
+  position: absolute;
+  top: -9999px;
+}
+/* Head */
+#mw-page-base {
+  height: 5em;
+  background-position: bottom left;
+  background-color: white;
+  /*background-repeat: repeat-x;
+	background-image: url('images/page-fade.png');
+	.vertical-gradient(@body-background-color, @menu-background-color, 50%, 100%);
+	background-color: @body-background-color;*/
+}
+#mw-head-base {
+  margin-top: -5em;
+  margin-left: 10em;
+  height: 9em;
+  background-color: white;
+}
+div#mw-head {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+div#mw-head h3 {
+  margin: 0;
+  padding: 0;
+}
+div#mw-head .logoContainer {
+  background-color: white;
+  height: 140px;
+}
+div#mw-head .nodos-bar {
+  background-image: url('images/headerbar.png');
+  background-repeat: repeat-x;
+  height: 13px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  /* For IE8 and earlier */
+}
+/* Navigation Containers */
+#left-navigation {
+  float: left;
+  margin-left: 10em;
+  /* margin-top: 2.5em; */
+  margin-bottom: -2.5em;
+  display: inline;
+  margin-top: -36px;
+}
+#right-navigation {
+  float: right;
+  margin-top: -36px;
+}
+/* Logo */
+#p-logo {
+  position: relative;
+  float: left;
+  top: 0;
+  left: 0;
+  height: 40px;
+}
+#p-logo a {
+  display: inline-block;
+  width: 18em;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-decoration: none;
+}
+#p-logo span {
+  margin-top: 32px;
+  font-weight: bold;
+  color: #726F9D;
+  margin-left: 40px;
+  float: right;
+  font-family: 'Roboto Condensed';
+  font-size: 17px;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+  #p-logo span {
+    display: none;
+  }
+}
+/* Panel */
+div#mw-panel {
+  font-size: inherit;
+  position: absolute;
+  top: 90px;
+  padding-top: 3em;
+  width: 10em;
+  left: 0;
+  /* First sidebar portlet. Not using :first-of-type for IE<=8 support. */
+}
+div#mw-panel div.portal:first-of-type {
+  background: none;
+}
+div#mw-panel div.portal {
+  margin: 0 0.6em 0 0.7em;
+  padding: 0.25em 0;
+  direction: ltr;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-image: /* @embed */ url('images/portal-break.png');
+}
+div#mw-panel div.portal h3 {
+  font-size: 0.75em;
+  color: #8E2395;
+  font-weight: normal;
+  margin: 0;
+  padding: 0.25em 0 0.25em 0.25em;
+  cursor: default;
+  border: none;
+}
+div#mw-panel div.portal div.body {
+  margin: 0 0 0 1.25em;
+  padding-top: 0;
+}
+div#mw-panel div.portal div.body ul {
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+}
+div#mw-panel div.portal div.body ul li {
+  line-height: 1.125em;
+  margin: 0;
+  padding: 0.25em 0;
+  font-size: 0.75em;
+  word-wrap: break-word;
+}
+div#mw-panel div.portal div.body ul li a {
+  color: #98469b;
+}
+div#mw-panel div.portal div.body ul li a:visited {
+  color: #94639B;
+}
+div#mw-panel #p-logo + div.portal {
+  background-image: none;
+  margin-top: 0;
+}
+div#mw-panel #p-logo + div.portal h3 {
+  display: none;
+}
+div#mw-panel #p-logo + div.portal div.body {
+  margin-left: 0.5em;
+}
+/* Footer */
+div#footer {
+  margin-left: 10em;
+  margin-top: 0;
+  padding: 0.75em;
+  direction: ltr;
+}
+div#footer ul {
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+}
+div#footer ul li {
+  margin: 0;
+  padding: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  color: #333;
+  font-size: 0.7em;
+}
+div#footer #footer-icons {
+  float: right;
+}
+div#footer #footer-icons li {
+  float: left;
+  margin-left: 0.5em;
+  line-height: 2em;
+  text-align: right;
+}
+div#footer #footer-info li {
+  line-height: 1.4em;
+}
+div#footer #footer-places li {
+  float: left;
+  margin-right: 1em;
+  line-height: 2em;
+}
+body.ltr div#footer #footer-places {
+  /* @noflip */
+  float: left;
+}
+.mw-body .external {
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-image: url('images/external-link-ltr-icon.png');
+  background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url('images/external-link-ltr-icon.svg');
+  background-image: linear-gradient(transparent, transparent), /* @embed */ url('images/external-link-ltr-icon.svg');
+  background-image: -o-linear-gradient(transparent, transparent), url('images/external-link-ltr-icon.png');
+  padding-right: 13px;
+}
