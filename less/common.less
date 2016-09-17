@@ -268,7 +268,7 @@ pre,
 
 .infobox {
 	width: 320px;
-	height: 400px;
+	min-height: 200px;
 	display: inline-block;
 	padding: 5px;
 	border: 1px solid;
@@ -284,10 +284,11 @@ pre,
 		align-items: center;
 		font-size: 20px;
 		font-family: 'Roboto Condensed';
+		padding: 7px;
 	}
 
 	.picture {
-		height: 62%;
+		min-height: 190px;
 
 		img {
 			height: 100%;
@@ -296,14 +297,15 @@ pre,
 	}
 
 	.info {
-		height: 30%;
+		min-height: 30%;
+		padding: 7px;
 
 		p {
 			margin-top: 10px;
 		}
 
 		div {
-			position: absolute;
+			position: relative;
 			width: 80%;
 			background-color: white;
 			text-align: center;
