@@ -165,12 +165,12 @@ pre,
 }
 .infobox {
   width: 320px;
-  min-height: 200px;
   display: inline-block;
   padding: 5px;
   border: 1px solid;
   position: relative;
   float: right;
+  clear: right;
   margin: 10px;
 }
 .infobox .heading {
@@ -192,7 +192,7 @@ pre,
 }
 .infobox .info {
   min-height: 30%;
-  padding: 7px;
+  padding: 3px 0 3px 0;
 }
 .infobox .info p {
   margin-top: 10px;
