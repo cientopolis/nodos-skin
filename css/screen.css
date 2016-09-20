@@ -33,6 +33,10 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+a,
+a:visited {
+  color: #4a4d9d;
+}
 /* Content */
 .mw-body {
   margin-left: 10em;
@@ -45,7 +49,7 @@ body {
   /* Merge the border with tabs' one (in their background image) */
   margin-top: -1px;
   background-color: #fff;
-  color: #252525;
+  color: #333;
   direction: ltr;
 }
 .mw-body .mw-editsection,
@@ -76,7 +80,8 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 .mw-body h1 {
-  font-size: 1.9em;
+  font-size: 1.6em;
+  padding: 15px 0 5px 0;
 }
 .mw-body .mw-body-content h1 {
   margin-top: 1em;
@@ -456,7 +461,7 @@ div.vectorTabs li a {
   height: 1.9em;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  color: #0645ad;
+  color: #4a4d9d;
   cursor: pointer;
   font-size: 0.8em;
 }
@@ -515,7 +520,7 @@ div.vectorMenu h3 span {
   padding-top: 1.375em;
   margin-right: 20px;
   font-weight: normal;
-  color: #8E2395;
+  color: #4a4d9d;
 }
 div.vectorMenu h3 a {
   position: absolute;
@@ -590,7 +595,7 @@ div.vectorMenu li a {
   display: inline-block;
   padding: 0.5em;
   white-space: nowrap;
-  color: #0645ad;
+  color: #4a4d9d;
   cursor: pointer;
   font-size: 0.8em;
 }
@@ -840,12 +845,13 @@ div#mw-panel div.portal {
 }
 div#mw-panel div.portal h3 {
   font-size: 0.75em;
-  color: #8E2395;
+  color: #4a4d9d;
   font-weight: normal;
   margin: 0;
   padding: 0.25em 0 0.25em 0.25em;
   cursor: default;
   border: none;
+  font-weight: bold;
 }
 div#mw-panel div.portal div.body {
   margin: 0 0 0 1.25em;
@@ -865,10 +871,10 @@ div#mw-panel div.portal div.body ul li {
   word-wrap: break-word;
 }
 div#mw-panel div.portal div.body ul li a {
-  color: #98469b;
+  color: #4a4d9d;
 }
 div#mw-panel div.portal div.body ul li a:visited {
-  color: #94639B;
+  color: #4a4d9d;
 }
 div#mw-panel #p-logo + div.portal {
   background-image: none;

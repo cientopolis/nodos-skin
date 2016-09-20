@@ -194,7 +194,7 @@ class NodosTemplate extends BaseTemplate {
 						?>></a>
 						<span>
 							Bienvenido a Nodos, la plataforma colaborativa de Artes Escénicas<br/>
-							Todos podemos subir o editar información, se parte de esta comunidad!
+							Todos podemos subir o editar información, sé parte de esta comunidad!
 						</span>
 					</div>
 					<?php $this->renderNavigation( 'PERSONAL' ); ?>
