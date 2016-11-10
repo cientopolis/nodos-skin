@@ -241,6 +241,20 @@ pre,
 .infobox.grupo .info {
   background-color: #5D386B;
 }
+.infobox.evento {
+  border-color: #FAAC58;
+}
+.infobox.evento .heading,
+.infobox.evento .info {
+  background-color: #FAAC58;
+}
+.infobox.edicion {
+  border-color: #A9A9F5;
+}
+.infobox.edicion .heading,
+.infobox.edicion .info {
+  background-color: #A9A9F5;
+}
 /* Personal */
 #p-personal {
   position: relative;
