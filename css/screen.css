@@ -22,13 +22,13 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 body {
-  background: -webkit-linear-gradient(to top, #FAF8EE 5%, white);
+  background: -webkit-linear-gradient(to top, #f2f9fe 5%, white);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(to top, #FAF8EE 5%, white);
+  background: -o-linear-gradient(to top, #f2f9fe 5%, white);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(top top, #FAF8EE 5%, white);
+  background: -moz-linear-gradient(top top, #f2f9fe 5%, white);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to top, #FAF8EE 5%, white);
+  background: linear-gradient(to top, #f2f9fe 5%, white);
   /* Standard syntax */
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -43,8 +43,8 @@ a:visited {
   padding: 1em;
   /* Border on top, left, and bottom side */
   border: 1px solid #a7d7f9;
-  border-left-color: #f2edd3;
-  border-bottom-color: #f2edd3;
+  border-left-color: #a7d7f9;
+  border-bottom-color: #a7d7f9;
   border-right-width: 0;
   /* Merge the border with tabs' one (in their background image) */
   margin-top: -1px;
@@ -500,7 +500,7 @@ div.vectorTabs span > a {
   display: block;
 }
 #left-navigation div.vectorTabs {
-  border-left: 1px solid #f2edd3;
+  border-left: 1px solid #a7d7f9;
   background-image: none;
 }
 /* Variants and Actions */
