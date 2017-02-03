@@ -10,6 +10,9 @@
  * the child selector. You can spot this by looking for the "OVERRIDDEN BY COMPLIANT BROWSERS" and
  * "IGNORED BY IE6" comments.
  */
+#mw-content-text > p > br:empty {
+  display: none;
+}
 /* Framework */
 html {
   font-size: 100%;
@@ -201,10 +204,13 @@ pre,
 }
 .infobox .info p {
   margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
 }
 .infobox .info div {
   position: relative;
-  width: 80%;
+  width: 90%;
   background-color: white;
   text-align: center;
   left: 50%;
@@ -212,6 +218,11 @@ pre,
   margin-top: 10px;
   border-radius: 6px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.infobox .info.small p {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 .infobox.persona {
   border-color: #15616B;
