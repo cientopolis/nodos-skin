@@ -10,9 +10,6 @@
  * the child selector. You can spot this by looking for the "OVERRIDDEN BY COMPLIANT BROWSERS" and
  * "IGNORED BY IE6" comments.
  */
-#mw-content-text > p > br:empty {
-  display: none;
-}
 /* Framework */
 html {
   font-size: 100%;
@@ -39,6 +36,9 @@ body {
 a,
 a:visited {
   color: #4a4d9d;
+}
+#mw-content-text > p > br:empty {
+  display: none;
 }
 /* Content */
 .mw-body {
@@ -207,6 +207,7 @@ pre,
   padding-left: 10px;
   padding-right: 10px;
   text-align: left;
+  word-wrap: break-word;
 }
 .infobox .info div {
   position: relative;
