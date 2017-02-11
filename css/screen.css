@@ -934,13 +934,23 @@ div#footer ul li {
   font-size: 0.7em;
 }
 div#footer #footer-icons {
-  float: right;
+  float: none;
+  clear: both;
 }
 div#footer #footer-icons li {
   float: left;
   margin-left: 0.5em;
   line-height: 2em;
   text-align: right;
+}
+div#footer #footer-icons #footer-customico {
+  margin-left: 0;
+}
+div#footer #footer-icons #footer-customico img {
+  padding-right: 10px;
+}
+div#footer #footer-icons #footer-poweredbyico {
+  float: right;
 }
 div#footer #footer-info li {
   line-height: 1.4em;

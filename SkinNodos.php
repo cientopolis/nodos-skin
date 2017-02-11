@@ -66,6 +66,25 @@ class SkinNodos extends SkinTemplate {
 		$out->addModuleStyles( $styles );
 	}
 
+	function makeFooterIcon( $icon, $withImage = 'withImage' ) {
+		if ( is_string( $icon ) ) {
+			$html = $icon;
+		} else { // Assuming array
+			$url = isset( $icon["url"] ) ? $icon["url"] : null;
+			unset( $icon["url"] );
+			if ( isset( $icon["src"] ) && $withImage === 'withImage' ) {
+				// do this the lazy way, just pass icon data as an attribute array
+				$html = Html::element( 'img', $icon );
+			} else {
+				$html = htmlspecialchars( $icon["alt"] );
+			}
+			if ( $url ) {
+				$html = Html::rawElement( 'a', array( "href" => $url, "target" => "_blank" ), $html );
+			}
+		}
+		return $html;
+	}
+
 	/**
 	 * Override to pass our Config instance to it
 	 */
